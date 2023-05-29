@@ -1,0 +1,106 @@
+// SCRIPT_START_END: +35 8
+// Helper script that copies the install command to a different file to execute it.
+// SCRIPT_HELPER: adoc_file="flatpak_list.adoc"; read -r ssa ssb ssc ssd <<<$(head "$adoc_file" | grep "SCRIPT_START_END"); tail -n $ssc "$adoc_file" | head -n $ssd > "${adoc_file}.tmp.sh"; chmod +x "${adoc_file}.tmp.sh"; "./${adoc_file}.tmp.sh"
+= Flatpaks on Steamdeck
+:hide-uri-scheme:
+// Enable keyboard macros
+:experimental:
+:toc:
+:toclevels: 4
+:icons: font
+:note-caption: ℹ️
+:tip-caption: 💡
+:warning-caption: ⚠️
+:caution-caption: 🔥
+:important-caption: ❗
+
+= Commands
+
+* Create or update the list:
++
+[source,bash]
+----
+flatpak list --columns=application,name,version | sort | column -t -s $'\t' -o ' | '
+----
+* Add Flathub to the configuration:
++
+[source,bash]
+----
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+----
+* Install all flatpaks from this list:
++
+[source,bash]
+----
+flatpak install --assumeyes $(
+  awk '{print $2}' "flatpak_list.adoc" \
+  | grep -vE "^(org.freedesktop.Platform(.Compat.i386|.GL(32)?.default|.ffmpeg(-full|_full.i386)|.openh264)?)$" \
+  | grep -vE "^(org.gnome.Platform(.Compat.i386)?)$" \
+  | grep -vE "^(org.kde.Platform)$" \
+  | grep -vE "^(org.winehq.Wine.(DLLs.dxvk|gecko|mono))$" \
+  | tail -n +60 \
+)
+----
+
+// Generously padded area to keep script maintenance low.
+
+
+
+
+
+
+= Data
+
+[cols="<,<,<",options=header]
+|===
+| Application                                 | Name                                  | Version
+
+// TODO: Update the line number!
+// You need to modify the number in the tail command according to the line number of the line below! Current line number is 60.
+| com.github.Eloston.UngoogledChromium        | ungoogled-chromium                    | 120.0.6099.129
+| com.github.Eloston.UngoogledChromium.Codecs | Codecs                                |
+| com.github.debauchee.barrier                |                                       |
+| com.github.tchx84.Flatseal                  | Flatseal                              | 2.1.0
+| com.heroicgameslauncher.hgl                 | Heroic Games Launcher                 | v2.11.0
+| com.usebottles.bottles                      | Bottles                               | 51.9
+| fr.romainvigier.MetadataCleaner             |                                       |
+| io.github.flattool.Warehouse                |                                       |
+| io.github.prateekmedia.appimagepool         | AppImage Pool                         | 5.1.0
+| io.github.unknownskl.greenlight             | Greenlight                            | 2.0.1
+| io.github.vikdevelop.SaveDesktop            |                                       |
+| io.mpv.Mpv                                  | mpv                                   | 0.37.0
+| it.mijorus.gearlever                        |                                       |
+| net.davidotek.pupgui2                       | ProtonUp-Qt                           | 2.8.2
+| net.lutris.Lutris                           | Lutris                                | 0.5.14
+| org.bunkus.mkvtoolnix-gui                   | MKVToolNix                            | 81.0
+| org.fedoraproject.MediaWriter               |                                       |
+| org.freedesktop.Platform                    | Freedesktop Platform                  | 21.08.22
+| org.freedesktop.Platform                    | Freedesktop Platform                  | 22.08.20
+| org.freedesktop.Platform                    | Freedesktop Platform                  | 23.08.8
+| org.freedesktop.Platform.Compat.i386        | i386                                  |
+| org.freedesktop.Platform.GL.default         | Mesa                                  | 21.3.9
+| org.freedesktop.Platform.GL.default         | Mesa                                  | 23.3.0
+| org.freedesktop.Platform.GL.default         | Mesa (Extra)                          | 23.3.0
+| org.freedesktop.Platform.GL32.default       | Mesa                                  | 23.3.0
+| org.freedesktop.Platform.ffmpeg-full        | ffmpeg-full                           |
+| org.freedesktop.Platform.ffmpeg_full.i386   | i386                                  |
+| org.freedesktop.Platform.openh264           | openh264                              | 2.1.0
+| org.gnome.Lollypop                          | Lollypop                              | 1.4.37
+| org.gnome.Platform                          | GNOME Application Platform version 44 |
+| org.gnome.Platform                          | GNOME Application Platform version 45 |
+| org.gnome.Platform.Compat.i386              | i386                                  |
+| org.gnome.baobab                            | Disk Usage Analyzer                   | 45.0
+| org.gnome.meld                              | Meld                                  | 3.22.0
+| org.gtk.Gtk3theme.Adwaita-dark              | Adwaita dark GTK theme                |
+| org.gtk.Gtk3theme.Breeze                    | Breeze GTK theme                      | 5.27.8
+| org.jellyfin.JellyfinServer                 | Jellyfin Server                       | 10.8.13
+| org.kde.Platform                            | KDE Application Platform              |
+| org.keepassxc.KeePassXC                     | KeePassXC                             | 2.7.6
+| org.mozilla.firefox                         | Firefox                               | 121.0
+| org.scummvm.ScummVM                         | ScummVM                               | 2.7.1
+| org.winehq.Wine.DLLs.dxvk                   | DXVK                                  | 2.3
+| org.winehq.Wine.gecko                       | Gecko                                 |
+| org.winehq.Wine.mono                        | Mono                                  |
+| re.chiaki.Chiaki                            | Chiaki                                | 2.2.0
+| ro.go.hmlendea.DL-Desktop                   | DL: language lessons                  | 4.0.0
+|===

@@ -1,590 +1,590 @@
 [
   {
-    "state": "install",
+    "comment": "",
     "name": "7zip.7zip",
-    "comment": "",
+    "state": "install",
     "type": "winget"
   },
   {
-    "state": "",
+    "comment": "",
     "name": "Canonical.Ubuntu.2204",
-    "comment": "",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "",
+    "comment": "",
     "name": "Citrix.Workspace",
-    "comment": "",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "install",
+    "comment": "",
     "name": "EpicGames.EpicGamesLauncher",
-    "comment": "",
+    "state": "install",
     "type": "winget"
   },
   {
-    "state": "",
-    "name": "Foxit.FoxitReader",
     "comment": "Popular and feature rich PDF reader",
+    "name": "Foxit.FoxitReader",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "install",
-    "name": "gerardog.gsudo",
     "comment": "Makes using administrative privileges easier",
+    "name": "gerardog.gsudo",
+    "state": "install",
     "type": "winget"
   },
   {
-    "state": "",
+    "comment": "",
     "name": "GIMP.GIMP",
-    "comment": "",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "",
+    "comment": "",
     "name": "Google.Chrome",
-    "comment": "",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "install",
-    "name": "KeePassXCTeam.KeePassXC",
     "comment": "Requires VC Runtime 2015 (140)",
+    "name": "KeePassXCTeam.KeePassXC",
+    "state": "install",
     "type": "winget"
   },
   {
-    "state": "",
-    "name": "KDE.Okular",
     "comment": "KDE PDF Viewer, Error 403",
+    "name": "KDE.Okular",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "",
-    "name": "KDE.KDiff3",
     "comment": "KDE Diff Viewer",
+    "name": "KDE.KDiff3",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "",
-    "name": "Meld.Meld",
     "comment": "(Gnome) Diff viewer",
+    "name": "Meld.Meld",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "install",
-    "name": "Microsoft.PowerShell",
     "comment": "Upstream version of PowerShell, which behaves mopre like a Unix shell",
+    "name": "Microsoft.PowerShell",
+    "state": "install",
     "type": "winget"
   },
   {
-    "state": "",
-    "name": "Microsoft.Sysinternals.Autoruns",
     "comment": "Execute as autoruns.exe",
+    "name": "Microsoft.Sysinternals.Autoruns",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "",
-    "name": "Microsoft.Sysinternals.ProcessExplorer",
     "comment": "Execute as process-explorer.exe",
+    "name": "Microsoft.Sysinternals.ProcessExplorer",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "",
-    "name": "Microsoft.Sysinternals.ProcessMonitor",
     "comment": "Execute as process-monitor.exe",
+    "name": "Microsoft.Sysinternals.ProcessMonitor",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "",
+    "comment": "",
     "name": "Microsoft.VisualStudioCode",
-    "comment": "",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "install",
-    "name": "Microsoft.VCRedist.2015+.x64",
     "comment": "Required by KeepassXC",
+    "name": "Microsoft.VCRedist.2015+.x64",
+    "state": "install",
     "type": "winget"
   },
   {
-    "state": "install",
-    "name": "ModuleArt.QuickPictureViewer",
     "comment": "We have been too aggressive an need an image viewer",
+    "name": "ModuleArt.QuickPictureViewer",
+    "state": "install",
     "type": "winget"
   },
   {
-    "state": "install",
+    "comment": "",
     "name": "Mozilla.Firefox",
-    "comment": "",
+    "state": "install",
     "type": "winget"
   },
   {
-    "state": "install",
+    "comment": "",
     "name": "Neovim.Neovim",
-    "comment": "",
+    "state": "install",
     "type": "winget"
   },
   {
-    "state": "",
-    "name": "Notepad++.Notepad++",
     "comment": "Popular SCITE-based editor",
+    "name": "Notepad++.Notepad++",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "",
-    "name": "Ombrelin.PandocGui",
     "comment": "Document converter",
+    "name": "Ombrelin.PandocGui",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "",
-    "name": "Python.Python.3",
     "comment": "Python.3, does not yield a match minor version required",
+    "name": "Python.Python.3",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "",
+    "comment": "",
     "name": "Rufus.Rufus",
-    "comment": "",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "",
-    "name": "TheDocumentFoundation.LibreOffice",
     "comment": "Complete Open Source Office package",
+    "name": "TheDocumentFoundation.LibreOffice",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "",
-    "name": "TortoiseGit.TortoiseGit",
     "comment": "Comes with MSYS, not sure if Git.Git is sufficient and we install msys2.msys2 if required",
+    "name": "TortoiseGit.TortoiseGit",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "",
-    "name": "twpayne.chezmoi",
     "comment": "Pending https://github.com/microsoft/winget-pkgs/pull/94759",
+    "name": "twpayne.chezmoi",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "install",
-    "name": "VideoLAN.VLC",
     "comment": "No MPV yet :-(",
+    "name": "VideoLAN.VLC",
+    "state": "install",
     "type": "winget"
   },
   {
-    "state": "install",
-    "name": "ViGEm.ViGEmBus",
     "comment": "Required by SWICD",
-    "type": "winget"
-  },
-  {
-    "state": "",
-    "name": "WinDirStat.WinDirStat",
-    "comment": "Popular diskspace analyzer",
-    "type": "winget"
-  },
-  {
+    "name": "ViGEm.ViGEmBus",
     "state": "install",
-    "name": "JAMSoftware.TreeSize.Free",
+    "type": "winget"
+  },
+  {
     "comment": "Popular diskspace analyzer",
+    "name": "WinDirStat.WinDirStat",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "",
+    "comment": "Popular diskspace analyzer",
+    "name": "JAMSoftware.TreeSize.Free",
+    "state": "install",
+    "type": "winget"
+  },
+  {
+    "comment": "",
     "name": "mcmilk.7zip-zstd",
-    "comment": "",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "",
+    "comment": "",
     "name": "stedolan.jq",
-    "comment": "",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "",
-    "name": "Fluent Terminal",
     "comment": "",
+    "name": "Fluent Terminal",
+    "state": "",
     "type": "msstore"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Adobe Express",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Clipchamp",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Cortana",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Disney+",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Feedback Hub",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Groove Music",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Disney+",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Instagram",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "MSN Weather",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Mail and Calendar",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Messenger",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Microsoft News",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Microsoft People",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Microsoft Photos",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Microsoft Solitaire Collection",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Microsoft Sticky Notes",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Microsoft Teams",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Microsoft Tips",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Microsoft To Do",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "",
-    "name": "Microsoft.Edge",
     "comment": "Can be removed, Startmenu and some other components are hardcoded to Edge though.",
+    "name": "Microsoft.Edge",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Microsoft.OneDrive",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Movies & TV",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
-    "name": "Notepad",
     "comment": "Name in Win11-22H2.",
+    "name": "Notepad",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Office",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "OneDrive",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Paint",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
-    "name": "Phone Link",
     "comment": "Shutdown or sign out when uninstall of this hangs.",
+    "name": "Phone Link",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Power Automate",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Prime Video for Windows",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Spotify Music",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "TikTok",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "WhatsApp Desktop",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Windows Camera",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
-    "name": "Windows Clock",
     "comment": "Might be useful to keep to avoid error messages of te new focus feature.",
+    "name": "Windows Clock",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Windows Maps",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Windows Media Player",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
-    "name": "Windows Notepad",
     "comment": "Name in Win11-21H2.",
+    "name": "Windows Notepad",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Windows Sound Recorder",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Windows Voice Recorder",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Windows Web Experience Pack",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "",
+    "comment": "Might be useful to keep, I found some messages while starting games, but they looked fine to me.",
     "name": "Xbox Game Bar Plugin",
-    "comment": "Might be useful to keep, I found some messages while starting games, but they looked fine to me.",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "",
+    "comment": "Might be useful to keep, I found some messages while starting games, but they looked fine to me.",
     "name": "Xbox Game Bar",
-    "comment": "Might be useful to keep, I found some messages while starting games, but they looked fine to me.",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "",
+    "comment": "Might be useful to keep, I found some messages while starting games, but they looked fine to me.",
     "name": "Xbox Game Speech Window",
-    "comment": "Might be useful to keep, I found some messages while starting games, but they looked fine to me.",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "",
+    "comment": "Might be useful to keep, I found some messages while starting games, but they looked fine to me.",
     "name": "Xbox Identity Provider",
-    "comment": "Might be useful to keep, I found some messages while starting games, but they looked fine to me.",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "",
+    "comment": "Might be useful to keep, I found some messages while starting games, but they looked fine to me.",
     "name": "Xbox TCUI",
-    "comment": "Might be useful to keep, I found some messages while starting games, but they looked fine to me.",
-    "type": "winget"
-  },
-  {
     "state": "",
-    "name": "Xbox",
+    "type": "winget"
+  },
+  {
     "comment": "Might be useful to keep, I found some messages while starting games, but they looked fine to me.",
+    "name": "Xbox",
+    "state": "",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "22364Disney.ESPNBetaPWA_6rarf9sa4v8jt",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "5319275A.WhatsAppDesktop_cv1g1gvanyjgm",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
-    "name": "",
     "comment": "AmazonVideo.PrimeVideo_pwbj9vvecjh7j",
+    "name": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "BytedancePte.Ltd.TikTok_6yccndn6064se",
-    "comment": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
-    "name": "",
     "comment": "FACEBOOK.317180B0BB486_8xx8rvfyw5nnt",
+    "name": "",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "uninstall",
-    "name": "",
     "comment": "Facebook.InstagramBeta_8xx8rvfyw5nnt",
-    "type": "winget"
-  },
-  {
-    "state": "uninstall",
     "name": "",
-    "comment": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0",
+    "state": "uninstall",
     "type": "winget"
   },
   {
-    "state": "disabled",
+    "comment": "SpotifyAB.SpotifyMusic_zpdnekdrzrea0",
+    "name": "",
+    "state": "uninstall",
+    "type": "winget"
+  },
+  {
+    "comment": "",
     "name": "MediaPlayback",
-    "comment": "",
+    "state": "disabled",
     "type": "WindowsOptionalFeatures"
   },
   {
-    "state": "disabled",
+    "comment": "",
     "name": "Printing-XPSServices-Features",
-    "comment": "",
+    "state": "disabled",
     "type": "WindowsOptionalFeatures"
   },
   {
-    "state": "disabled",
+    "comment": "",
     "name": "SMB1Protocol",
-    "comment": "",
-    "type": "WindowsOptionalFeatures"
-  },
-  {
     "state": "disabled",
-    "name": "WorkFolders-Client",
-    "comment": "",
     "type": "WindowsOptionalFeatures"
   },
   {
-    "state": "uninstall",
+    "comment": "",
+    "name": "WorkFolders-Client",
+    "state": "disabled",
+    "type": "WindowsOptionalFeatures"
+  },
+  {
+    "comment": "",
     "name": "Microsoft.ScreenSketch",
-    "comment": "",
+    "state": "uninstall",
     "type": "AppxPackage"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Microsoft.YourPhone",
-    "comment": "",
+    "state": "uninstall",
     "type": "AppxPackage"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Microsoft.Windows.Photos",
-    "comment": "",
+    "state": "uninstall",
     "type": "AppxPackage"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Microsoft.Windows.WordPad~~~~0.0.1.0",
-    "comment": "",
+    "state": "uninstall",
     "type": "WindowsCapability"
   },
   {
-    "state": "uninstall",
+    "comment": "",
     "name": "Media.WindowsMediaPlayer~~~~0.0.12.0",
-    "comment": "",
+    "state": "uninstall",
     "type": "WindowsCapability"
   },
   {
-    "state": "uninstall",
-    "name": "Microsoft.Windows.PowerShell.ISE~~~~0.0.1.0",
     "comment": "",
+    "name": "Microsoft.Windows.PowerShell.ISE~~~~0.0.1.0",
+    "state": "uninstall",
     "type": "WindowsCapability"
   }
 ]

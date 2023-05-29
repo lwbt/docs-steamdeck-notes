@@ -1,0 +1,72 @@
+= Steam Deck Notes
+:hide-uri-scheme:
+// Enable keyboard macros
+:experimental:
+:toc:
+:toclevels: 4
+:icons: font
+:note-caption: ℹ️
+:tip-caption: 💡
+:warning-caption: ⚠️
+:caution-caption: 🔥
+:important-caption: ❗
+
+Steam Deck = The overpowered media player you dreamed of 20 years ago.
+
+== What is this?
+:tag-rootpages: https://rootpages.lukeshort.cloud/
+:tag-obsidian: https://obsidian.md/
+
+This a repository, but actually just a bunch of notes in markdown or ASCIIDOC
+format. Even though it is a GIT repository you should not depend on it in its
+current form. I may turn it into a Wiki, something like {tag-rootpages}[Root
+Pages], {tag-obsidian}[Obsidian], a monorepo or something different.
+
+You should start reading link:FAQ.adoc[FAQ]
+
+== Navigation
+
+* link:windows.adoc[Windows]
+* link:steamos.adoc[SteamOS]
+* link:steamos_launcher_items.adoc[SteamOS Launcher Items]
+
+=== Status: Windows
+
+* Should be cleaned up a bit
+* Windows installation is fine so far for my needs
+** `windows_drivers` contains a script to download the last known to work
+   drivers
+** `windows_installation` contains scripts to be run right after the initial
+   boot to set up things
+** `windows_installation\config` contains a few configuration files or assets
+   for the initial setup, everything beyond that should be handled in dotfiles
+* Mostly used to run games from Epic Games Store. Sorry if you expected the
+  perfect setup.
+** link:windows.md#can-the-epic-games-launcher-detect-previously-installed-games[Restore Games]
+   should allow for quick recovery when an installation has issues without
+   downloading a lot of content again.
+
+Going forward this will be my only Windows installation that I keep around and
+I will not use it much. Thank you Valve for making Windows almost obsolete for
+an occasional gamer like me, and for improving Wine and developing Proton.
+
+=== Status: Linux
+
+[NOTE]
+Using a terminal in game mode to me feels like using what could have been a
+well rounded Windows 8 experience.
+
+* Drive is unencrypted and I will not change the partition layout myself right now
+* Dotfiles (private repo) are messy and need to be restructured
+* Flatpaks are fine
+
+== Tinkering with SteamOS aka »Don't have a Steam Deck«
+
+TODO: consolidate with the other section:
+link:steamos.adoc#running-steamos-on-other-devices--holoiso[HoloISO]
+
+Put https://github.com/ventoy/Ventoy/[Ventoy] on a USB drive or SD card, and
+put the HoloISO ISO file onto it. Boot it. Now you see what Steam OS is like.
+Requires a general purpose computer obviously, not a Chromebook or anything
+with an ARM chip. For now. Installation to hard drive can be done, but I guess
+the developer needs a hand getting UEFI to work.

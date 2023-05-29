@@ -1,82 +1,90 @@
 [
   {
-    "state": "active",
+    "comment": "Remove Search Icon",
     "name": "SearchboxTaskbarMode",
     "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Search",
-    "value": "0",
+    "state": "active",
     "type": "DWord",
-    "comment": "Remove Search Icon"
+    "value": "0"
   },
   {
-    "state": "active",
+    "comment": "Remove Chat Icon",
     "name": "TaskbarMn",
     "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
-    "value": "0",
+    "state": "active",
     "type": "DWord",
-    "comment": "Remove Chat Icon"
+    "value": "0"
   },
   {
-    "state": "active",
+    "comment": "Do not hide file extensions! Requires reboot or sign out.",
     "name": "HideFileExt",
     "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
-    "value": "0",
+    "state": "active",
     "type": "DWord",
-    "comment": "Do not hide file extensions! Requires reboot or sign out."
+    "value": "0"
   },
   {
-    "state": "active",
+    "comment": "Hide Desktop Icons",
     "name": "HideIcons",
     "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
-    "value": "1",
+    "state": "active",
     "type": "DWord",
-    "comment": "Hide Desktop Icons"
+    "value": "1"
   },
   {
-    "state": "active",
+    "comment": "Show all folders in explorer navigation pane",
     "name": "NavPaneShowAllFolders",
     "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
-    "value": "1",
+    "state": "active",
     "type": "DWord",
-    "comment": "Show all folders in explorer navigation pane"
+    "value": "1"
   },
   {
+    "comment": "Turn off Aero Shake",
+    "name": "DisallowShaking",
+    "path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
     "state": "active",
+    "type": "DWord",
+    "value": "1"
+  },
+  {
+    "comment": "Re-enable passwordless login in netplwiz",
     "name": "DevicePasswordLessBuildVersion",
     "path": "HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\PasswordLess\\Device",
-    "value": "0",
+    "state": "active",
     "type": "DWord",
-    "comment": "Re-enable passwordless login in netplwiz"
+    "value": "0"
   },
   {
-    "state": "active",
+    "comment": "Set display scaling to 100 percent https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/dpi-related-apis-and-registry-settings?view=windows-11#table-6-hkcucontrol-paneldesktoplogpixels-values",
     "name": "LogPixels",
     "path": "HKCU:\\Control Panel\\Desktop",
-    "value": "96",
+    "state": "active",
     "type": "DWord",
-    "comment": "Set display scaling to 100 percent https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/dpi-related-apis-and-registry-settings?view=windows-11#table-6-hkcucontrol-paneldesktoplogpixels-values"
+    "value": "96"
   },
   {
-    "state": "active",
+    "comment": "Foxit Reader hide start page",
     "name": "bShowStartPage",
     "path": "HKCU:\\Software\\Foxit Software\\Foxit PDF Reader 12.0\\Preferences\\General",
-    "value": "0",
+    "state": "active",
     "type": "String",
-    "comment": "Foxit Reader hide start page"
+    "value": "0"
   },
   {
-    "state": "active",
+    "comment": "Foxit Reader hide ads",
     "name": "bShowAdvertisement",
     "path": "HKCU:\\Software\\Foxit Software\\Foxit PDF Reader 12.0\\Preferences\\General",
-    "value": "0",
+    "state": "active",
     "type": "String",
-    "comment": "Foxit Reader hide ads"
+    "value": "0"
   },
   {
-    "state": "active",
+    "comment": "Foxit Reader hide promotion page",
     "name": "bShowFloatingPromotionPage",
     "path": "HKCU:\\Software\\Foxit Software\\Foxit PDF Reader 12.0\\Preferences\\General",
-    "value": "0",
+    "state": "active",
     "type": "String",
-    "comment": "Foxit Reader hide promotion page"
+    "value": "0"
   }
 ]

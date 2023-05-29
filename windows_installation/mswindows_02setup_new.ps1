@@ -15,7 +15,7 @@
 # An unexpected error occurred while executing the command:
 # Download request status is not success.
 # 0x80190193 : Forbidden (403).
-# 
+#
 # PS C:\Windows\system32> winget.exe install KDE.KDiff3
 # Found KDiff3 [KDE.KDiff3] Version 1.9.6
 # This application is licensed to you by its owner.

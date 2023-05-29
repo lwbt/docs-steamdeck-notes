@@ -1,0 +1,162 @@
+= SteamOS Launcher Items
+:hide-uri-scheme:
+// Enable keyboard macros
+:experimental:
+:toc:
+:toclevels: 4
+
+== Heroic
+
+Works by simply adding it to Steam from the start menu. Used mainly for
+checking updates and getting weekly freebies without switching to desktop mode.
+Controller navigation seems to be very good, but for the update icons to be
+shown on the main screen you should set the controller layout to browser.
+
+== ScummVM
+
+To play older games like the early Moneky Island titles or Indiana Jones and
+the Fate of Atlantis you open the Software Center (KDE Discover) in desktop
+mode and search for ScummVM, then install it. Configure ScummVM as you are used
+to or refer to the ScummVM manual to setup your games.
+
+https://www.reddit.com/r/SteamDeck/comments/po1vg0/add_scummvm_games_to_your_steam_launcher/
+
+=== Indiana Jones and the fate of Atlantis
+
+On your desktop from the context menu select Create New -> Link to Application
+and enter the following:
+
+[source,bash]
+----
+/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=scummvm_wrapper org.scummvm.ScummVM atlantis
+----
+
+`atlantis` is the reference to the game in ScummVM you want to start. You can
+get a list of available games with scummvm `--list-targets`. Finally add the
+game to Steam as you did with games from Heroic.
+Source:
+https://www.reddit.com/r/SteamDeck/comments/po1vg0/add_scummvm_games_to_your_steam_launcher/[Reddit]
+
+Alternatively you can modify the **Launch Options** to include everything
+after `/usr/bin/flatpak`.
+
+TODO: You might need to install and configure settings in Flatseal for this app.
+
+== Konsole Terminal
+
+Target: `env`
+
+Start in: `"/home/deck"`
+
+Launch Options:
+
+[source,bash]
+----
+-u LD_PRELOAD konsole --fullscreen --notransparency
+----
+
+Controller Layout: link:steamos_controller_layouts.adoc#terminal-konsole[Custom Terminal]
+
+`-u` is the short form of `--unset`, so it does not involve `LD_PRELOAD`.
+
+=== Btop on Terminal
+
+Launch Options:
+
+[source,bash]
+----
+-u LD_PRELOAD konsole --fullscreen --notransparency -e btop
+----
+
+This is a sufficient system monitoring solution without maintaining more
+complex software, configuration and resource usage.
+
+=== Btop on Terminal with tabs file
+
+This solution does not work as intended at the moment.
+
+The recommended solution is to make it easy to open a new tab in the default
+Konsole and make it easy to run `btop` there.
+
+Issues:
+
+* The screen stay black in Steam Deck UI mode. Although it is working properly
+  in desktop mode.
+* The `--tabs-from-file` opens an additional empty tab. A few users have
+  reported bugs, but KDE has not release a fix or reacted to the issue.
+
+Launch Options:
+
+[source,bash]
+----
+-u LD_PRELOAD konsole --fullscreen --notransparency --tabs-from-file ~/.config/konsole_tabs_btop.txt
+----
+
+Content of `~/.config/konsole_tabs_btop.txt` file:
+
+[source,bash]
+----
+title: %n;; command: /home/deck/.local/bin/btop
+----
+
+== WezTerm
+
+Target: `env`
+
+Start in: `"/home/deck"`
+
+Launch Options:
+
+[source,bash]
+----
+-u LD_PRELOAD wezterm
+----
+
+== Greenlight
+
+Launch Options:
+
+[source,bash]
+----
+--fullscreen
+----
+
+== Lollypop
+
+Use standard Launch Options.
+
+Modify window size in
+`~/.var/app/org.gnome.Lollypop/config/glib-2.0/settings/keyfile` for optimal
+screen space usage. Change the line with `window-size` to
+`window-size=[1280, 800]` and the line with `window-position` to
+`window-position=[0, 0]`.
+https://www.reddit.com/r/SteamDeck/comments/13xrunn/how_to_run_lollypop_music_player_from_game_mode/[Reddit post].
+
+== Browsers
+
+=== Mozilla Firefox
+
+Although I'm a strong supporter of Firefox, I found Firefox to be cumbersome to
+use in the Steam Deck UI and therefore I cannot recommend it at the moment.
+Please use Chromium if you encounter any issues, because it worked for me
+without any issues at all.
+
+=== Syncthing on Chromium
+
+Add this to the end of the Launch Options:
+
+[source,bash]
+----
+--kiosk https://127.0.0.1:8384
+----
+
+To get Syncthing itself to run you need to download the binary and a Systemd unit file.
+
+=== Jellyfin on Chromium
+
+Add this to the end of the Launch Options:
+
+[source,bash]
+----
+--kiosk http://127.0.0.1:8096
+----

@@ -1,0 +1,326 @@
+= SteamOS configuration and usage
+:hide-uri-scheme:
+// Enable keyboard macros
+:experimental:
+:toc:
+:toclevels: 4
+:icons: font
+:note-caption: ℹ️
+:tip-caption: 💡
+:warning-caption: ⚠️
+:caution-caption: 🔥
+:important-caption: ❗
+
+== SteamOS and running SteamOS on other devices
+:tag-recovery: https://help.steampowered.com/en/faqs/view/1B71-EDF2-EB6D-2BB3
+:tag-holoiso: https://github.com/theVakhovskeIsTaken/holoiso
+
+=== HoloISO
+
+A common fallacy is that one needs a Steam Deck device to run SteamOS. Many will
+give you misleading advice and this excuse, which is not true. Wikipedia notes
+that SteamOS version 1 and 2 were based on Debian. A Debian based SteamOS 3 was
+apparently in the works but never published, an Arch Linux based version was
+published instead. You could download the older versions of SteamOS intended for
+Steam Machines directly from Valve, but the documents seem to be outdated and
+still refer to APT repositories and Debian or Ubuntu.
+
+// TODO: rewrite this section to separate recovery and Holo
+You can find up to date {tag-recovery}[Recovery Instructions], which some
+community members converted into standard ISOs and offering them as
+{tag-holoiso}[HoloISO]. I hope I got that right. I need to look into how they
+do this when I have time.
+
+Speculation on my side: They finally wanted to deliver a product with recent
+components and have control over the source without getting to involved with
+the technical boards of the major 3 Linux vendor ecosystems in the corporate
+market (Red Hat, Suse, Ubuntu/Debian). They probably hired new talent with Arch
+Linux experience. Steam had been ported to Flatpak already and Google was quite
+successful with their Gentoo based ChromeOS platform 2. Enough with gossip
+which I have no sufficient proof for.
+
+So there is a way, but people will find excuses too.
+
+=== Bazzite
+
+A new project based on Fedora Universal Blue, like Silverblue and Kinoite,
+emerged in 2023:
+
+https://github.com/ublue-os/bazzite/
+
+It is now possible to get a Gnome Desktop instead while maintaining the Steam
+Deck Game Mode experience.
+
+My research so far:
+
+* https://universal-blue.discourse.group/docs?topic=37#will-there-be-any-performance-increases-with-bazzite-3
+** https://medium.com/@a.b.t./here-are-some-possibly-useful-tweaks-for-steamos-on-the-steam-deck-fcb6b571b577
+*** Advice against modifying THP from https://github.com/CryoByte33/steam-deck-utilities
+* An unofficial public mirror for Steam OS source code: https://gitlab.com/evlaV
+** The author accuses Valve and it's partners to violate the GPL. (It looks
+   rampant, but reasonable.)
+** BIOS images: https://gitlab.com/evlaV/jupiter-PKGBUILD#valve-official-steam-deck-jupiter-release-bios-database
+
+=== Recovery
+
+// TODO: rewrite this section
+{tag-recovery}[Recovery Instructions]
+
+=== How to recover/restore/migrate from another Steam Deck?
+
+It looks like there is no functionality to transfer or migrate data from one
+device to another. Although Sony Playstation and Microsoft Xbox offer such a
+functionality. So it is not unreasonable to ask. It has just not been
+implemented yet by Valve or a community member.
+
+== Basics, guides and resources
+
+* https://help.steampowered.com/en/faqs/view/671A-4453-E8D2-323C[Steam Deck Desktop FAQ]
+* Desktop Mode: long press the power button and select **Switch to Desktop**
+* Leave Desktop Mode: use the logout desktop icon on the desktop or Application
+  Launcher menu or press the power button
+* Bring up the on-screen keyboard: press the kbd:[Steam+X] buttons
+
+* https://github.com/mikeroyal/Steam-Deck-Guide#Other-Linux-Operating-Systems-for-the-Steam-Deck
++
+A big list of many things I don't just want to duplicate here.
+
+* https://gitlab.com/popsulfr/steam-deck-tricks
++
+A more Linux focused list of tricks you should know about.
+
+** Easy SSH access to the Steam Deck
+** Unlock Plasma Vaults from the Steam Deck UI
+** Shared keyboard, mouse and clipboard with barrier
+** Use podman to create a SteamOS/Arch development image
+** Use your smartphone as webcam via Droidcam
+
+* https://boilingsteam.com/getting-started-with-the-steam-deck-desktop/
++
+A review I can recommend to read.
+
+* https://www.steamgriddb.com/
++
+Artwork database for customization if artwork is missing or not up to your
+taste.
+
+== Storage Management
+
+To better keep track of SD Cards:
+
+* Settings -> Storage -> MicroSD Card -> Options -> Rename Library
+** I recommend using `DECK SD $LETTER`, where $LETTER is a letter from A to Z
+** Continue the scheme with `AA, AB, AC [...]`
+* `sudo tune2fs -L "DECK-SD-$LETTER" /run/media/deck/...`
+** A host device will also mount a volume under this given label in the future
+   instead of a ver long UUID.
+
+Using `DECK SD $LETTER` and `DECK-SD-$LETTER` helps distinguishing if a name is
+sourced from a Steamd VDF file of from the file system label.
+
+== Applications
+
+=== Syncthing
+
+See: link:steamos_launcher_items.adoc#syncthing-on-chromium[Launcher Items]
+
+=== ScummVM
+
+See: link:steamos_launcher_items.adoc#scummvm[Launcher Items]
+
+=== Music and media players
+
+* MPV for movies with a comfortable gum alias
+** I included this functionality in my `sdm.sh` script along with functionality
+   to play songs and albums
+* Lollypop for music: link:steamos_launcher_items.adoc#lollypop[Launcher Items]
+
+=== Heroic Game Launcher
+:tag-heroic-bash-launcher: https://github.com/redromnon/HeroicBashLauncher/wiki/Steam-Deck-(Flatpak)-Guide
+:tag-flatseal: https://github.com/lwbt/docs-steamdeck-notes/blob/main/steamos.adoc#flatpak-overrides-and-flatseal
+
+In desktop mode open the Software Center (KDE Discover) and search for Heroic,
+then install it. It is a Launcher which gives you access to the Epic Games store
+and GOG store. You can get free games which you normally have to pay for in the
+Epic Games store. Most of the games run on Linux, but it depends on the
+publisher. Fortnite can be installed, but does not run, it requires to have
+anticheat programs running which don't like or don't expect what SteamOS does
+with Wine and Proton.
+
+Adding games from Heroic to Steam can be done through a shell script named
+{tag-heroic-bash-launcher}[HeroicBashLauncher]. It can also be done through the
+add **add a game** button in the Steam desktop client and selecting the
+respective desktop shortcut which you might need to create first from the tools
+tab of the respective game in Heroic. Recently an new feature was added to each
+game page to add it to Steam.
+
+You might need to install and configure settings in {tag-flatseal}[Flatseal]
+for this app.
+
+=== Installation and use of Proton GE and other Compatibility Tools
+:tag-proton-ge: https://github.com/GloriousEggroll/proton-ge-custom
+:tag-rps-proton-ge: https://www.rockpapershotgun.com/how-to-install-proton-ge-on-the-steam-deck
+:tag-proton-upgt: https://flathub.org/apps/details/net.davidotek.pupgui2
+
+{tag-proton-ge}[Proton GE] is a customized build of Proton.
+
+Open the Software Center (KDE Discover) in desktop mode and search for
+{tag-proton-upqt}[ProtonUp-Qt], then install it. Run the program in desktop
+mode to let it install the latest Proton GE version. You could add the program
+as a game in steam if you feel the need to access it quickly and don't mind
+clutter, like I did for the terminal application. From the Steam UI you will be
+able to set Proton GE as the runtime environment once the initial setup and
+download are done. Desktop mode Steam settings and Steam UI settings seem to be
+independent.
+
+Sources:
+
+* {tag-proton-ge}[GitHub GloriousEggroll/proton-ge-custom]
+* {tag-rps-proton-ge}[rockpapershotgun.com]
+
+==== Strategy for installing and updating Compatibility Tools
+
+* Steam: Tools below are only available and updatable through ProtonUp-Qt
+** GE-Proton: installed
+** Boxtron: not installed
+** Luxtorpeda: not installed
+** Proton Tkg: not installed
+** Roberta: not installed
+** SteamTinkerLaunch: not installed
+* Heroic Wine: Nothing installed here or managed with Heroic or ProtonUp-Qt
+  since Heroic is able to detect tools installed in Steam name space. Avoid
+  management overhead and disk space cruft by installing and updating all
+  possible tools in all possible places when possible.
+** Lutris is only available here for Steam and Heroic, but if you have serious
+   problems with a game, debugging in Bottles looks like the most constructive
+   option.
+* Heroic Proton: Same as above.
+* Bottles: Tools below are primarily available through Bottles you'll make a
+  mess when you use ProtonUp-Qt. You can find them through the menu button
+  (three bars) -> Preferences -> **Runners**.
+** caffe: installed
+** lutris: installed
+** soda: installed
+** vaniglia: installed
+** GE Wine: installed
+** GE-Proton: not installed
+
+=== Installation and use Bottles
+:tag-flathub-bottles: https://flathub.org/apps/details/com.usebottles.bottles
+:tag-bottles-first: https://docs.usebottles.com/getting-started/first-run
+
+Bottles is available from {tag-flathub-bottles}[Flathub] and thus on SteamOS.
+Installing your {tag-bottles-first}[first app] is simple, you select an
+environment from the presets games, app or custom and select to run the
+installer of your choice. If the App is not terribly broken then it will run
+just fine. Done!
+
+=== Media Server Jellyfin and streaming
+
+You can install https://flathub.org/apps/org.jellyfin.JellyfinServer[Jellyfin
+Server] and set it up for your needs. Be sure to set a password, I tried
+without and failed the first time I attempted to set it up.
+
+Steam Link can be found in the settings, but it doesn't work with devices which
+don't run popular apps, like Samsungs Tizen.
+
+https://github.com/skorokithakis/catt[catt] might be a solution instead of
+buying an additional Chromecast.
+
+=== Flatpak overrides and Flatseal
+
+Existing flatpak overrides can be exported from and imported to the following
+directory: `$HOME/.local/share/flatpak/overrides/`
+
+Noteworthy examples in heredoc format for copy and pasting:
+
+[source,bash]
+----
+mkdir -p "$HOME/.local/share/flatpak/overrides"
+
+tee "$HOME/.local/share/flatpak/overrides/org.scummvm.ScummVM" << 'EOF'
+[Context]
+filesystems=~/Games
+EOF
+----
+
+== Known issues with games
+
+=== Anti-Cheat
+
+Integrated in recent releases from Heoric: https://areweanticheatyet.com/
+
+Excerpt:
+
+* Fornite: Denied
+// TODO: check installation and remove from windows
+* Genshin Impact: Running since 3.8
+* Halo Infinite: Running with Proton-GE!
+* Halo MCC: Supported
+* Valorant: Broken
+
+=== ProtonDB suggestions for specific games
+
+* Dead Or Alive 5 LR  https://www.protondb.com/app/311730 `PROTON_NO_ESYNC=1 PROTON_NO_FSYNC=1 %command%`
+* Dead Or Alive 6 https://www.protondb.com/app/838380 Use Proton GE for working story mode
+* Tomb Raider Underworld: https://www.protondb.com/app/8140 `PROTON_USE_WINED3D=1 %command% gamescope -w 1920 -h 1080 -r 60 -n`
+* Ground Control Anthology: https://www.protondb.com/app/254820 `-mod DARKCONS` for the expansion pack
+
+=== Where and how to report compatibility issues?
+
+[quote,https://github.com/ValveSoftware/Proton/issues/new/choose]
+____
+add `PROTON_LOG=1 %command%` to the game's launch options and attach the
+generated $HOME/steam-$APPID.log
+____
+
+=== Heroic: Epic Games Store and GOG
+
+Epic Games:
+
+* Shadow of Tomb Raider, apparently does not launch with DX12 mode
+
+GOG:
+
+* Tomb Raider 1+2+3
+** Controller mappings: https://www.thekinsie.com/words/tombraider/
+** Been unable to launch Tomb Raider 3 yet
+** Tomb Raider 5 seems to work fine
+
+== Known issues with hardware
+
+=== Monitors with USB-C input work but integrated USB hubs and attached devices don't work
+
+That is the YMMV part. I have two Dell U2720Q. One had firmware M2T101 and the
+other firmware M2T104. The latter can be upgraded to newer firmware, the other
+can apparently not and USB devices are not detected on the device with the
+older firmware while the newer has no problems and works just fine.
+
+== Linux settings and dotfiles
+
+I'm used to more friendlier configuration of aliases and command completion from
+Debian and Ubuntu. This is typical for other distributions.
+
+TODO: link dotfiles repo here.
+
+While SteamOS should be treated like an appliance investigation which parts
+could be handled through Ansible configuration management should be evaluated.
+
+== Passwordless `sudo` access
+
+Ideally you should not need this. Especially if you don't understand what sudo
+is and how you can recover from a faulty sudoers configuration, which is beyond
+the scope of this document.
+
+[source,bash]
+----
+# Set a temporary sudo password like 123456 for current user deck
+passwd
+# Configure passwordless sudo access for users in the wheel group
+echo "%wheel ALL=(ALL) NOPASSWD:ALL" \
+| sudo tee /etc/sudoers.d/wheel >/dev/null
+# Remove the temporary password for the user deck
+sudo passwd -d deck
+----
+
+Source: https://www.reddit.com/r/SteamDeck/comments/t8ddl4/run_sudo_commands_without_a_password_on_steam_deck/[Reddit]

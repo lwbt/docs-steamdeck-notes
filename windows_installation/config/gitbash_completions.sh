@@ -12,6 +12,7 @@ readonly arr_1
 count=$(wc -l < <(grep -v '^#' "${BASH_SOURCE[0]%.sh}.allowlist.cfg"))
 counter=0
 
+# shellcheck disable=SC2068
 for i in ${arr_1[@]}; do
 
   #sed --in-place \

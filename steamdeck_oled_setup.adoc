@@ -1,0 +1,222 @@
+= Steam Deck OLED Setup Protocol
+:hide-uri-scheme:
+// Enable keyboard macros
+:experimental:
+:toc:
+:toclevels: 4
+:icons: font
+:note-caption: ℹ️
+:tip-caption: 💡
+:warning-caption: ⚠️
+:caution-caption: 🔥
+:important-caption: ❗
+
+// TODO: Make it similar to https://github.com/lwbt/inventory_human/blob/main/configuration/tv_samsung_freestyle.adoc
+== General
+
+=== Cost of the solution
+
+[cols="<,>,options=header]
+|===
+| Item                          | Price in €
+
+| Steam Deck 512GB LCD in 2021  | 679
+| Steam Deck 1TB OLED in 2023   | 679
+|                               |
+| Deck Mate                     |  79
+| Magnetic Adapter              |   7
+|                               |
+| SD Card 512GB                 |  44
+| SD Card 400GB                 |  29
+// 3rd 512GB SD Card is used on Chromebook
+| SD Card 512GB (2)             |  33
+| SD Card 1TB                   |  83
+|                               |
+| **SD Cards Total**            | 189
+|                               |
+| Total for one console         | 954
+|===
+
+=== Hardware
+
+link:hardware.adoc[Hardware]
+
+* Serial Number Steam Deck LCD:  `FVAA21201785`
+* Serial Number Steam Deck OLED: `FYZZ3421252F`
+
+=== Which OS does it run on? SteamOS
+
+link:steamos.adoc[SteamOS] -- TODO: This article needs an overhaul!
+
+=== Data Migration
+
+See: link:steamos.adoc#how-to-recoverrestoremigrate-from-another-steam-deck[How to recover/restore/migrate from another Steam Deck?]
+
+== Setup Protocol
+
+=== About Dialog from OOBE
+
+[source,diff]
+----
+-OS Variant steamdeck
++OS Variant steamdeck-galileo-oobe
+----
+
+It was the same after completing the installation.
+
+=== OOTB
+
+* Language: `English`
+* Timezone `UTC+01:00 CET`
+* Wifi: `Guest`
+* Firmware Update
+* QR Code Login
+* Game Mode Login
+
+=== First boot after OOTB
+
+[NOTE]
+====
+
+[%collapsible]
+=====
+* KDE Desktop Login
+** Configure link:steamos.adoc#passwordless-sudo-access[Passwordless `sudo` access]
+** Copy/migrate `.local/share/Steam` (`rsync -avx --progress`)
+*** This is also shown under Settings -> Storage
+** Re-install Flatpaks from link:flatpak_list.adoc[flatpak_list.adoc]
+*** com.github.debauchee.barrier
+*** io.github.flattool.Warehouse
+*** io.github.vikdevelop.SaveDesktop
+*** it.mijorus.gearlever
+* Insert SD card
+* Wait for downloads and updates to complete
+* Delete Proton files for Forza Horizon 5
+* BIOS comparison
++
+[source,diff]
+----
+ AMD Firmware:
+- AerithJ (Aerith LCD)
++ SphJupiter (Sephiroth OLED)
+----
+* Enable
+  link:FAQ.adoc#can-i-mount-luks-encrypted-volumes[LUKS] &
+  link:FAQ.adoc#can-i-enable-iommu[IOMMU]
+* Save pristine dotfiles in https://github.com/lwbt/ref-dotfiles-ootb
+=====
+====
+
+* [TODO] Local DNS name for Home & Travel Router
+* [TODO] Check https://gitlab.com/popsulfr/steam-deck-tricks from link:steamos.adoc#basics-guides-and-resources[SteamOS]
+* [TODO] https://github.com/Ethorbit/SteamDeck-SteamOS-Guides/tree/main/Installing-Any-Package (systemd-nspawn)
+* [TODO] Shortcut & Install of Google Chrome when suggested
+* [TODO] Setup Lockscreen
+** Purpose: Prevent someone else making unwanted modifications while the device is out of sight for a few minutes
+* [TODO] Windows -- Some drivers are still missing https://help.steampowered.com/de/faqs/view/6121-ECCD-D643-BAA8
+
+=== Configuration
+
+==== Game Mode Settings
+
+// TODO: fold this section like in beamer
+Game Mode Settings -- via kbd:[Steam] -> Settings:
+
+[NOTE]
+====
+
+[%collapsible]
+=====
+* General: 24-hour clock: `Enabled`
+// TODO
+* System: Hostname -- Decide for a custom hostname?
+* Security: Lock Screen: `On system wake and power up`
+* Internet: Wifi: Media, Travel
+* Notifications: none
+* Display:
+** Adjust Display Colors:
+*** OLED Defaults:
+**** Color Vibrance: SRGB -- ✅ -- Native
+**** Color Temperature: `6500K`
+*** LCD Defaults:
+**** Color Vibrance: Native -- ✅ SRGB -- Boosted
+**** Color Temperature: `7500K`
+** Schedule Night Mode: `9PM` and `6AM`
+** Night Mode Tint: 25 Ticks from Minimum Value
+** Put Deck To Sleep:
+*** When plugged in: `Disabled`
+*** When not plugged in: `Disabled`
+* Audio: none
+* Bluetooth: `WF-1000XM4`, `WF-1000XM4` (2nd), `SmartRemote`, `Keychron K3`
+* Controller: none
+* Keyboard:
+** Add `US International` as Current Layoout
+** Disable Trigger Click
+** Trackpad Sensitivity: `1.25x`
+* Customization: none
+* Friends & Chat: none
+* Downloads:
+** Limit: `8750` KB/s
+** Display download rates in bits per second: `Disabled`
+* Cloud: none
+* Remote Play: `Disabled`
+=====
+====
+
+==== Game Mode Menu
+
+Game Mode Options Menu -- via kbd:[···]:
+
+[NOTE]
+====
+
+[%collapsible]
+=====
+* Notifications: none
+* Chat: nome
+* Quick Settings: none
+* Performance:
+** TDP Limit: `3` Watts (LCD)
+** TDP Limit: `5` Watts (OLED, starts to stutter below)
+* Soundtracks: none
+* Help: none
+=====
+====
+
+==== Desktop
+
+* Steam Data Backup (VDF files, ...)
+* Dotfiles: https://github.com/lwbt/dotfiles_steamdeck
+** https://github.com/lwbt/jellyfin_config/tree/main
+** KDE -- Dolphin tabs (Save Desktop?)
+* Flatpak: link:flatpak_list.adoc[flatpak_list.adoc]
+* Eget: https://github.com/lwbt/eget_config/
+
+==== Dotfiles TODO
+
+[NOTE]
+====
+
+// TODO
+Needs to be Berlin!
+
+[%collapsible%open]
+=====
+[source,diff]
+----
+--- steamos_home/.config/ktimezonedrc
++++ holoiso_home/.config/ktimezonedrc
+@@ -1,4 +1,4 @@
+ [TimeZones]
+-LocalZone=Europe/Paris
++LocalZone=UTC
+ ZoneinfoDir=/usr/share/zoneinfo
+ Zonetab=/usr/share/zoneinfo/zone.tab
+----
+=====
+====
+
+==== Paired input devices
+
+TODO:
+See: Game Mode Settings + Inventory Human

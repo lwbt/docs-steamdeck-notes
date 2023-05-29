@@ -1,3 +1,0 @@
-# YAGNI - You Ain' t Gonna Need It (until you have time and you do implement it)
-
-- [REG] Fix where folders open up in explorer with inappropriate views - https://superuser.com/q/793666

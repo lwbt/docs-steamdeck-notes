@@ -1,0 +1,73 @@
+= Windows Drivers
+:hide-uri-scheme:
+// Enable keyboard macros
+:experimental:
+:toc:
+:toclevels: 4
+:icons: font
+:note-caption: ℹ️
+:tip-caption: 💡
+:warning-caption: ⚠️
+:caution-caption: 🔥
+:important-caption: ❗
+
+== Fetch the drivers on Linux
+
+[source,bash]
+----
+dl_windows_drivers.sh
+----
+
+== Installing drivers on Steam Deck
+
+=== GPU
+
+[source,pwsh]
+----
+GPU\setup.exe
+----
+
+=== SD card
+
+Create `sd_card_setup.iss`:
+
+[source,pwsh]
+----
+Sdcard\setup.exe /r
+----
+
+Install driver:
+
+[source,pwsh]
+----
+Sdcard\setup.exe /s
+----
+
+=== Audio Drivers
+
+// TODO: break after "|" without "`" or break before with it
+[source,pwsh]
+----
+Get-ChildItem "Audio\" -Recurse -Filter "*inf" | ForEach-Object { PNPUtil.exe /add-driver $_.FullName /install }
+----
+
+=== RTL Blue
+
+[source,pwsh]
+----
+Blue\InstallDriver.cmd
+----
+
+=== RTL WLAN
+
+[source,pwsh]
+----
+WLAN\Install.bat
+----
+
+=== Controller input driver
+
+[source,pwsh]
+----
+SWICD_Setup.exe /S
+----

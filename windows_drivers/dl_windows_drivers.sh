@@ -27,12 +27,12 @@ for file in {GPU,WLAN,Blue,Sdcard}".zip"; do
 
   case "$file" in
     "GPU.zip")
-       mv "${file%%.zip}/"*/*/* "${file%%.zip}/"
-       rmdir "${file%%.zip}/"*/* 2> /dev/null
-       ;;
+      mv "${file%%.zip}/"*/*/* "${file%%.zip}/"
+      rmdir "${file%%.zip}/"*/* 2> /dev/null
+      ;;
     *)
-       mv "${file%%.zip}/"*/* "${file%%.zip}"
-       ;;
+      mv "${file%%.zip}/"*/* "${file%%.zip}"
+      ;;
   esac
 
   rmdir "${file%%.zip}/"* 2> /dev/null
@@ -50,4 +50,4 @@ done
 swicd_ver="v0.3.3"
 #wget -O "SWICD_Setup_${swicd_ver}.exe" \
 wget \
- "https://github.com/mKenfenheuer/steam-deck-windows-usermode-driver/releases/download/${swicd_ver}/SWICD_Setup.exe" 
+  "https://github.com/mKenfenheuer/steam-deck-windows-usermode-driver/releases/download/${swicd_ver}/SWICD_Setup.exe"

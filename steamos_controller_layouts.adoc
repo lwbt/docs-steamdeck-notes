@@ -1,0 +1,179 @@
+= Controller Layouts
+:hide-uri-scheme:
+// Enable keyboard macros
+:experimental:
+:toc:
+:toclevels: 4
+:icons: font
+:note-caption: ℹ️
+:tip-caption: 💡
+:warning-caption: ⚠️
+:caution-caption: 🔥
+:important-caption: ❗
+
+== General
+
+[NOTE]
+`user_id` might be sensitive information and I have not yet decided on a method
+to replace variables and such sensitive information. Also I have not reviewed
+all the configuration changes I made, because this is the reason why I write
+this document. So for now I won't publish the files publicly.
+
+Configuration and customizations are saved in
+`~/.local/share/Steam/steamapps/common/Steam ControllerConfigs/${user_id}/config/`.
+
+Links:
+
+* https://partner.steamgames.com/doc/features/steam_controller/iga_file
+* https://steamcommunity.com/sharedfiles/filedetails/?id=932405100[Editing .vdf steam controller files]
+* Valve Data Format (VDF):
+** https://github.com/ynsta/steamcontroller/blob/master/scripts/vdf2json.py
+** https://github.com/node-steam/vdf
+
+== Status Overview
+
+Script to generate the overview:
+
+[%collapsible]
+=====
+
+[source,bash]
+----
+echo; \
+for file in "configset_controller_neptune.vdf" "configset_FVAA21201785.vdf"; do
+  echo -e "${file}\n"
+
+  # Crummy CSV, but sufficient for now.
+  python3 ./vdf2json.py -i "${file}" \
+  | jq -r '
+      ("Game, Values"),
+      ("--- , ---"),
+      (.controller_config | keys[] as $k | "\($k), \(.[$k])")
+    ' \
+  | sed -E "
+      s/(1233570)/Mirror's Edge™ Catalyst (\1)/
+      s/(2012840)/Portal with RTX (\1)/
+      s/(214550)/Eets Munchies (\1)/
+      s/(224760)/FEZ (\1)/
+      s/(225000)/Tomb Raider: Chronicles (\1)/
+      s/(225320)/Tomb Raider III: Adventures of Lara Croft (\1)/
+      s/(32470)/STAR WARS™ Empire at War: Gold Pack (\1)/
+      s/(413080)/Steam Controller Configs - Desktop (\1)/
+      s/(8140)/Tomb Raider: Underworld (\1)/
+    " \
+  | column -t -s "," -o " |" \
+  | sed -e 's/^/| /g'
+
+  echo
+done
+----
+
+* Answer with nice formatting in the jq part: https://stackoverflow.com/a/59973830/2010467
+* App IDs https://steamdb.info/
+
+=====
+
+`steam_autocloud.vdf` -- Contains only the account ID.
+
+`configset_controller_neptune.vdf` -- Seems to be for the main mode (game mode) of operation.
+
+[cols="<,<",options=header]
+|===
+| Game                                               | Values
+
+| Eets Munchies (214550)                             | {"template":"controller_neptune_touchscreen.vdf"}
+| FEZ (224760)                                       | {"template":"controller_neptune_gamepad_fps.vdf"}
+| Mirror's Edge™ Catalyst (1233570)                  | {"autosave":"1"}
+| Portal with RTX (2012840)                          | {"template":"controller_android_wasd.vdf"}
+| STAR WARS™ Empire at War: Gold Pack (32470)        | {"workshop":"831208901"}
+| Steam Controller Configs - Desktop (413080)        | {"workshop":"2827544600"}
+| Tomb Raider III: Adventures of Lara Croft (225320) | {"workshop":"702574222"}
+| Tomb Raider: Chronicles (225000)                   | {"workshop":"706907250"}
+| Tomb Raider: Underworld (8140)                     | {"workshop":"585843008"}
+| assassin's creed 3                                 | {"autosave":"1"}
+| broken sword director's cut                        | {"template":"controller_neptune_wasd.vdf"}
+| chiaki                                             | {"workshop":"2833502771"}
+| doom 64                                            | {"template":"controller_neptune_wasd.vdf"}
+| duolingo                                           | {"template":"controller_neptune_webbrowser.vdf"}
+| heroic games launcher                              | {"template":"controller_neptune_webbrowser.vdf"}
+| jellyfin server                                    | {"template":"controller_neptune_webbrowser.vdf"}
+| konsole                                            | {"autosave":"1"}
+| lollypop                                           | {"autosave":"1"}
+| lord of the rings - the battle for middle earth ii | {"autosave":"1"}
+| syncthing web gui                                  | {"template":"controller_neptune_webbrowser.vdf"}
+| the lord of the rings the battle for middle-earth  | {"autosave":"1"}
+| tom clancy's splinter cell                         | {"template":"controller_android_wasd.vdf"}
+| tom clancy's splinter cell pandora tomorrow        | {"template":"controller_android_wasd.vdf"}
+| tomb raider 1                                      | {"workshop":"2863748978"}
+| tomb raider 2                                      | {"autosave":"1"}
+| tomb raider 3                                      | {"autosave":"1"}
+| wezterm (konsole clone)                            | {"autosave":"1"}
+|===
+
+`configset_FVAA21201785.vdf` -- Seems to be for desktop mode.
+
+[cols="<,<",options=header]
+|===
+| Game          | Values
+
+| tomb raider 1 | {"workshop":"2863752223"}
+| tomb raider 2 | {"autosave":"1"}
+| tomb raider 3 | {"workshop":"2863769948"}
+|===
+
+Directories without config entries:
+
+* `311730` = Dead or Alive 5 Last Round
+
+These are probably leftovers.
+
+== Layouts
+
+=== Terminal (Konsole)
+
+Optimized for usage in Bash and MPV
+
+TODO: Mpv shortcuts and osd, explain motivation
+
+Derived from: controller_neptune_webbrowser
+
+* A,B,X,Y: Button Pad
+** A: Enter
+** B: CTRL+C = Terminal Abort
+** X: Show Keyboard
+** Y: Mouse 4 Click
+*** Y: S Key = MPV Screenshot
+* Bumpers
+** L1: Left Arrow Key, Right Control Key = Terminal Movement
+** R1: Right Arrow Key, Right Control Key = Terminal Movement
+* Back Grips
+** L4: Alt Key
+** R4: Backspace
+** L5: Middle Mouse Click = Paste?
+** R5: Control Key
+* Menu Buttons
+** Windows: Control Key
+*** Windows: W Key
+** Bars: ESC
+* DDad: Up, Down, Left, Right
+* Triggers
+** Right (Soft): Left Mouse Click
+** Left (Soft): Right Mouse Click
+* Joysticks:
+** Right: Mouse
+*** Click: Tab Key
+** Left: DPad
+*** Up: Scroll Up
+*** Down: Scroll Down
+*** Left: Page Down Key
+*** Right: Page Up = MPV Chapter
+*** Click: Space Key = MPV Chapter
+* Trackpads
+** Right: As Mouse
+*** Click: Left Mouse Click
+** Left: Scroll Wheel
+* Gyro: None
+
+=== WezTerm and other Terminal Programs
+
+Copy the configuration for Konsole.
